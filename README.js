@@ -140,3 +140,84 @@ body.dark .carrito {
     background: #333;
     color: white;
 }
+const productos = [
+    { id: 1, nombre: "Camiseta", precio: 20, imagen: "https://via.placeholder.com/150" },
+    { id: 2, nombre: "Pantalón", precio: 35, imagen: "https://via.placeholder.com/150" },
+    { id: 3, nombre: "Zapatos", precio: 50, imagen: "https://via.placeholder.com/150" },
+];
+
+let carrito = [];
+
+const productosDiv = document.getElementById("productos");
+const carritoDiv = document.getElementById("carrito");
+const carritoLista = document.getElementById("carritoLista");
+const totalCarrito = document.getElementById("totalCarrito");
+const cantidadCarrito = document.getElementById("cantidadCarrito");
+const notificacion = document.getElementById("notificacion");
+
+// Muestra los productos en la tienda
+function mostrarProductos() {
+    productosDiv.innerHTML = "";
+    productos.forEach((producto) => {
+        const div = document.createElement("div");
+        div.classList.add("producto");
+        div.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+            <h3>${producto.nombre}</h3>
+            <p>$${producto.precio}</p>
+            <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+        `;
+        productosDiv.appendChild(div);
+    });
+}
+
+// Agregar producto al carrito
+function agregarAlCarrito(id) {
+    const producto = productos.find((p) => p.id === id);
+    carrito.push(producto);
+    actualizarCarrito();
+
+    notificacion.classList.add("mostrar");
+    setTimeout(() => notificacion.classList.remove("mostrar"), 2000);
+}
+
+// Actualizar el carrito
+function actualizarCarrito() {
+    carritoLista.innerHTML = "";
+    let total = 0;
+
+    carrito.forEach((producto, index) => {
+        total += producto.precio;
+        const li = document.createElement("li");
+        li.innerHTML = `${producto.nombre} - $${producto.precio} 
+            <button onclick="eliminarDelCarrito(${index})">❌</button>`;
+        carritoLista.appendChild(li);
+    });
+
+    totalCarrito.textContent = total.toFixed(2);
+    cantidadCarrito.textContent = carrito.length;
+}
+
+// Eliminar producto del carrito
+function eliminarDelCarrito(index) {
+    carrito.splice(index, 1);
+    actualizarCarrito();
+}
+
+// Mostrar u ocultar carrito
+document.getElementById("verCarrito").addEventListener("click", () => {
+    carritoDiv.classList.toggle("abierto");
+});
+
+// Vaciar carrito
+document.getElementById("vaciarCarrito").addEventListener("click", () => {
+    carrito = [];
+    actualizarCarrito();
+});
+
+// Modo oscuro
+document.getElementById("modoOscuroToggle").addEventListener("change", (e) => {
+    document.body.classList.toggle("dark", e.target.checked);
+});
+
+mostrarProductos();
