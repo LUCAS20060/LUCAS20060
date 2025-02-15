@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Rutina Diaria</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Rutina Diaria</h1>
+    </header>
+    <main>
+        <section class="rutina">
+            <div class="actividad">
+                <span class="hora">07:00 AM</span>
+                <p>Despertar y aseo personal</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">07:30 AM</span>
+                <p>Desayuno</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">08:00 AM</span>
+                <p>Ejercicio</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">09:00 AM</span>
+                <p>Trabajo o estudio</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">01:00 PM</span>
+                <p>Almuerzo</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">02:00 PM</span>
+                <p>Continuar con trabajo o estudio</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">06:00 PM</span>
+                <p>Tiempo libre o hobbies</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">08:00 PM</span>
+                <p>Cena</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">09:00 PM</span>
+                <p>Relajación o lectura</p>
+            </div>
+            <div class="actividad">
+                <span class="hora">10:30 PM</span>
+                <p>Dormir</p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+main {
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.rutina {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.actividad {
+    display: flex;
+    align-items: center;
+    background: #e3f2fd;
+    padding: 10px;
+    border-radius: 5px;
+    border-left: 5px solid #007bff;
+}
+
+.hora {
+    font-weight: bold;
+    color: #007bff;
+    margin-right: 10px;
+    min-width: 80px;
+}
